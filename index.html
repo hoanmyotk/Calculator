@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="main">
+        <div class="calc">
+            <div id="logo">Casiotk</div>
+            <input type="text" placeholder = "" id="to-input">
+            <input type="text" placeholder="0" id="input">
+            <button onclick="Clear()" style="background-color: #F94C66; box-shadow: 6px 6px 13px rgba(0, 0, 0, .20);">C</button>
+            <button onclick="Del()" style="background-color: #CCF3EE; box-shadow: 6px 6px 13px rgba(0, 0, 0, .20);">Del</button>
+            <button onclick="Add('%')" style="background-color: #FFC54D; box-shadow: 6px 6px 13px rgba(0, 0, 0, .20);">%</button>
+            <button onclick="Add('÷')" style="background-color:#A0D995; box-shadow: 6px 6px 13px rgba(0, 0, 0, .20);">÷</button>
+            <button onclick="Add('7')">7</button>
+            <button onclick="Add('8')">8</button>
+            <button onclick="Add('9')">9</button>
+            <button onclick="Add('x')" style="background-color: #FF5B00; box-shadow: 6px 6px 13px rgba(0, 0, 0, .20);">x</button>
+            <button onclick="Add('4')">4</button>
+            <button onclick="Add('5')">5</button>
+            <button onclick="Add('6')">6</button>   
+            <button onclick="Add('-')" style="background-color: #47B5FF; box-shadow: 6px 6px 13px rgba(0, 0, 0, .20);">-</button>   
+            <button onclick="Add('1')">1</button>   
+            <button onclick="Add('2')">2</button>   
+            <button onclick="Add('3')">3</button>   
+            <button onclick="Add('+')" style="background-color: #9772FB; box-shadow: 6px 6px 13px rgba(0, 0, 0, .20);">+</button>   
+            <button onclick="Add('.')">.</button>   
+            <button onclick="Add('0')">0</button>   
+            <button onclick="Calc()" class="equal">=</button>   
+        </div>
+    </div>
+    <script>
+        const Output = document.getElementById("input");
+        const ToP = document.getElementById("to-input");
+        // let s = '7x3+4÷2'
+        // // let m = s.replace('x', '*');
+        // s = s.replace('÷', '/');
+        // console.log(s);
+        function Add(num){
+            Output.value += num;
+        };
+        function check(s, a){
+            for(i=0;i<s.length;++i){
+                if(s[i] == a){
+                    return 1;
+                }
+            };
+            return 0;
+        }
+        function Calc(){
+            if(Output.value == '520'){
+                Output.value = 'Anh yêu em';
+            }
+            else if(Output.value == ''){
+                alert('Nhap di thang lon');
+            }
+            else{
+                let s = Output.value;
+                if(check(s, 'x')){
+                    s = s.replace('x', '*');
+                }
+                if(check(s, '÷')){
+                    s = s.replace('÷', '/');
+                }
+                try{
+                    ToP.value = Output.value + " =";
+                    Output.value = eval(s);
+                }
+                catch(err){
+                    alert('Nhap ngu chet me may di');
+                    Clear();
+                }
+            }
+        };
+        function Clear(){
+            ToP.value = '';
+            Output.value = '';
+        }
+        function Del(){
+            ToP.value = '';
+            Output.value = Output.value.slice(0, -1);
+        }
+    </script>
+</body>
+</html>
