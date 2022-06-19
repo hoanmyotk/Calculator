@@ -87,10 +87,10 @@ button:active{
 } */
 @media(max-width: 610px){
     .calc{
-        grid-template-columns: repeat(4, 82px); 
+        grid-template-columns: repeat(4, 80px); 
         overflow: hidden;
     }
     #input{
-        width: 320px;
+        width: 315px;
     }
 }
